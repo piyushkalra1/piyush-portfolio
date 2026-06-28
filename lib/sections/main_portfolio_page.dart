@@ -126,6 +126,8 @@ class _MainPortfolioPageState extends State<MainPortfolioPage> {
                       key: _sectionKeys["Hero"],
                       onVisible: (frac) => _onSectionVisible("Hero", frac),
                       onActionPressed: _scrollToSection,
+
+
                     ),
                     AboutSection(
                       key: _sectionKeys["About"],

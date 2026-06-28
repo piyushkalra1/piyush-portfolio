@@ -151,7 +151,8 @@ class _ExperienceSectionState extends State<ExperienceSection> {
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 8),
                 height: 280, // Approximate height matching card
-                width: 2,
+                width: 3,
+
                 color: AppColors.borderLight,
               ),
             ],
