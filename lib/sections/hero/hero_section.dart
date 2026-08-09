@@ -320,8 +320,8 @@ class _HeroSectionState extends State<HeroSection> with SingleTickerProviderStat
     return Row(
       mainAxisAlignment: center ? MainAxisAlignment.center : MainAxisAlignment.start,
       children: [
-        _buildSocialIcon(Icons.code, AppStrings.githubUrl, "GitHub"),
-        const SizedBox(width: 16),
+        // _buildSocialIcon(Icons.code, AppStrings.githubUrl, "GitHub"),
+        // const SizedBox(width: 16),
         _buildSocialIcon(Icons.work_outline, AppStrings.linkedinUrl, "LinkedIn"),
         const SizedBox(width: 16),
         _buildSocialIcon(Icons.email_outlined, "mailto:${AppStrings.emailAddress}", "Email"),
