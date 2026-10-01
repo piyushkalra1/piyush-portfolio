@@ -262,19 +262,22 @@ class _SkillsSectionState extends State<SkillsSection> with SingleTickerProvider
   IconData _getCategoryIcon(String category) {
     switch (category) {
       case "Languages":
-        return Icons.translate_outlined;
+        return Icons.code_rounded;
+      case "Frameworks & SDKs":
       case "Frameworks & Core":
-        return Icons.construction_outlined;
+        return Icons.flutter_dash_rounded;
       case "Backend & Services":
-        return Icons.cloud_queue_outlined;
+        return Icons.cloud_done_rounded;
       case "State Management":
-        return Icons.account_tree_outlined;
+        return Icons.account_tree_rounded;
+      case "Architecture & Storage":
       case "Architecture & Database":
-        return Icons.storage_outlined;
+        return Icons.layers_rounded;
+      case "Payment & Publishing":
       case "Tools & Platforms":
-        return Icons.grid_view_outlined;
+        return Icons.shopping_bag_outlined;
       default:
-        return Icons.star_border;
+        return Icons.auto_awesome_rounded;
     }
   }
 }

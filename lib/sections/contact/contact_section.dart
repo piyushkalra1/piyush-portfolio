@@ -46,34 +46,49 @@ class _ContactSectionState extends State<ContactSection> {
     }
   }
 
-  void _submitForm() {
+  void _submitForm() async {
     if (_formKey.currentState?.validate() ?? false) {
-      // Show premium success snackbar
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Row(
-            children: const [
-              Icon(Icons.check_circle, color: Colors.white),
-              SizedBox(width: 12),
-              Text(
-                "Message sent successfully! Thank you.",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-          backgroundColor: AppColors.greenAccent,
-          behavior: SnackBarBehavior.floating,
-          duration: const Duration(seconds: 4),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-          margin: const EdgeInsets.all(20),
-        ),
+      final name = _nameController.text.trim();
+      final email = _emailController.text.trim();
+      final subject = _subjectController.text.trim().isNotEmpty
+          ? _subjectController.text.trim()
+          : "Portfolio Inquiry from $name";
+      final message = _messageController.text.trim();
+
+      final mailtoUri = Uri(
+        scheme: 'mailto',
+        path: AppStrings.emailAddress,
+        query: 'subject=${Uri.encodeComponent(subject)}&body=${Uri.encodeComponent("Hi Piyush,\n\n$message\n\nBest regards,\n$name\n$email")}',
       );
-      
-      // Clear fields
-      _nameController.clear();
-      _emailController.clear();
-      _subjectController.clear();
-      _messageController.clear();
+
+      await launchUrl(mailtoUri);
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Row(
+              children: const [
+                Icon(Icons.check_circle, color: Colors.white),
+                SizedBox(width: 12),
+                Text(
+                  "Opening your email app to send message! Thank you.",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            backgroundColor: AppColors.greenAccent,
+            behavior: SnackBarBehavior.floating,
+            duration: const Duration(seconds: 4),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            margin: const EdgeInsets.all(20),
+          ),
+        );
+
+        _nameController.clear();
+        _emailController.clear();
+        _subjectController.clear();
+        _messageController.clear();
+      }
     }
   }
 

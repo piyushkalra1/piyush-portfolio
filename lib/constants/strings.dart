@@ -5,8 +5,8 @@ class AppStrings {
   static const String devName = "Piyush Kalra";
   static const String devRole = "Senior Flutter Developer";
   static const String devLocation = "Jaipur, India";
-  static const String devAboutShort = "Senior Flutter Developer specializing in high-performance Android, iOS, and Web applications using Clean Architecture, clean state management, and modern designs.";
-  static const String devAboutLong = "I am a passionate Flutter Developer specializing in Android, iOS, and Flutter Web development. With over 3 years of production experience, I craft scalable applications using Clean Architecture, robust state management, and beautifully responsive user interfaces. I enjoy solving complex engineering problems, integrating custom native features, and delivering seamless user experiences.";
+  static const String devAboutShort = "Senior Flutter Developer with 4+ years of experience specializing in high-performance Android, iOS, and Web applications using Clean Architecture, robust state management, and modern design systems.";
+  static const String devAboutLong = "I am a passionate Flutter Developer with 4 years of production experience (since October 2022) building scalable Android and iOS applications using Flutter and Dart. Delivered 15+ production applications published on the Google Play Store and Apple App Store with a combined reach of 100K+ downloads. Experienced in leading development teams, mentoring Flutter developers, handling direct client communication, gathering requirements, and delivering end-to-end mobile solutions from architecture to deployment.";
 
   // Social Links
   static const String githubUrl = "https://github.com/piyush-kalra";
@@ -17,82 +17,81 @@ class AppStrings {
   // Categories & Skills List
   static const Map<String, List<Map<String, dynamic>>> skillsData = {
     "Languages": [
-      {"name": "Dart", "level": 0.95},
+      {"name": "Dart", "level": 0.98},
       {"name": "Java", "level": 0.80},
       {"name": "Kotlin", "level": 0.85},
       {"name": "Swift", "level": 0.75},
     ],
-    "Frameworks & Core": [
-      {"name": "Flutter", "level": 0.98},
-      {"name": "REST APIs", "level": 0.95},
-      {"name": "Google Maps", "level": 0.90},
-      {"name": "Agora Video Calling", "level": 0.85},
+    "Frameworks & SDKs": [
+      {"name": "Flutter (Android & iOS)", "level": 0.98},
+      {"name": "RESTful APIs", "level": 0.95},
+      {"name": "Google Maps & Deep Linking", "level": 0.90},
+      {"name": "Agora Video/Voice Calling", "level": 0.88},
     ],
     "Backend & Services": [
-      {"name": "Firebase", "level": 0.92},
-      {"name": "Cloud Firestore", "level": 0.90},
-      {"name": "Push Notifications", "level": 0.95},
-      {"name": "FCM / APNs (PushKit)", "level": 0.90},
+      {"name": "Firebase Suite (Auth, Firestore, DB)", "level": 0.95},
+      {"name": "Push Notifications (FCM & PushKit)", "level": 0.95},
+      {"name": "Supabase", "level": 0.88},
+      {"name": "Crashlytics & Dynamic Links", "level": 0.92},
     ],
     "State Management": [
-      {"name": "Bloc", "level": 0.90},
-      {"name": "Provider", "level": 0.95},
+      {"name": "BLoC / Cubit", "level": 0.92},
+      {"name": "Provider", "level": 0.96},
+      {"name": "GetX", "level": 0.94},
       {"name": "Riverpod", "level": 0.88},
-      {"name": "GetX", "level": 0.92},
     ],
-    "Architecture & Database": [
-      {"name": "Clean Architecture", "level": 0.95},
-      {"name": "MVVM Pattern", "level": 0.92},
-      {"name": "SQLite / Hive", "level": 0.88},
-      {"name": "SharedPreferences", "level": 0.95},
+    "Architecture & Storage": [
+      {"name": "Clean Architecture & MVVM", "level": 0.96},
+      {"name": "SOLID Principles & Repository", "level": 0.92},
+      {"name": "SQLite, Hive & SharedPreferences", "level": 0.90},
+      {"name": "Flutter Secure Storage", "level": 0.92},
     ],
-    "Tools & Platforms": [
-      {"name": "Git / GitHub", "level": 0.92},
-      {"name": "CI/CD Pipelines", "level": 0.85},
-      {"name": "Android Studio / VS Code", "level": 0.95},
-      {"name": "Xcode", "level": 0.88},
+    "Payment & Publishing": [
+      {"name": "Razorpay, Stripe & CCAvenue", "level": 0.94},
+      {"name": "Google Pay, Apple Pay & Mollie", "level": 0.90},
+      {"name": "Google Play Console Publishing", "level": 0.95},
+      {"name": "Apple App Store Connect Release", "level": 0.92},
     ],
   };
 
   // Experience Timeline
   static const List<Map<String, dynamic>> experienceList = [
     {
-      "role": "Senior Flutter Developer",
-      "company": "Inventco Infotech",
+      "role": "Flutter Developer (Lead)",
+      "company": "Inventco Software Pvt. Ltd., Jaipur",
       "location": "Jaipur, India",
       "duration": "Aug 2024 - Present",
-      "description": "Lead and maintain production-scale cross-platform mobile apps. Architect features from concept to release.",
+      "description": "Led Flutter development for Android and iOS applications from development to production release.",
       "responsibilities": [
-        "Developed and maintained mobile applications using Flutter framework to enhance user experience.",
-        "Mentor interns, review code, and provide guidance on Flutter best practices.",
-        "Coordinate deployments, implement new features, and optimize app performance for Android and iOS.",
-        "Collaborated with cross-functional teams to deliver high-quality, user-friendly applications.",
-        "Developed and maintained the Krat-Easy Challenge App and Cash in Transit App from concept to deployment."
+        "Led Flutter development for Android and iOS applications from development to production.",
+        "Managed a team of Flutter developers, conducted code reviews, and mentored junior engineers.",
+        "Handled direct client meetings, requirement gathering, sprint planning, and solution discussions.",
+        "Built scalable applications using Flutter, MVVM, Clean Architecture, Firebase, REST APIs, and Bloc/GetX."
       ]
     },
     {
       "role": "Flutter Developer",
-      "company": "Solvebee IT Services Pvt Ltd.",
+      "company": "Solvebee IT Services Pvt. Ltd.",
       "location": "Jaipur, India",
       "duration": "Feb 2023 - Aug 2024",
-      "description": "Built multiple commercial applications from scratch and improved core features, payment systems, and notifications.",
+      "description": "Developed and maintained multiple production applications across healthcare, insurance, and hospitality domains.",
       "responsibilities": [
-        "Designed and developed mobile applications including Bonanza Care, Bonanza Touch, Probus Insurance, and RAS Club.",
-        "Built applications from scratch and enhanced existing apps with new features, bug fixes, and performance improvements.",
-        "Integrated REST APIs, payment gateways (Razorpay, Stripe, CCAvenue), and implemented MVVM architecture with Provider and GetX.",
-        "Deployed apps to Play Store and App Store while ensuring responsive UI and seamless performance.",
-        "Managed push notifications, image notifications, and background tasks for iOS and Android."
+        "Developed and maintained multiple production Flutter applications across healthcare, insurance, and hospitality domains.",
+        "Improved application performance, fixed production issues, and delivered new features in Agile sprints.",
+        "Published and maintained Android and iOS applications on the Play Store and App Store.",
+        "Integrated REST APIs, payment gateways (Razorpay, Stripe, CCAvenue), and local database storage."
       ]
     },
     {
       "role": "Flutter Intern",
       "company": "Aimerse Technology",
-      "location": "Remote",
-      "duration": "Internship",
-      "description": "Learnt UI/UX design systems and structured state management under senior software engineers.",
+      "location": "Jaipur / Remote",
+      "duration": "Oct 2022 - Dec 2022",
+      "description": "Gained hands-on experience with Flutter architecture, responsive UI development, and API integration.",
       "responsibilities": [
-        "Worked on UI/UX design, API integration, third-party library integration, and state management using MVVM with Provider.",
-        "Contributed to development of mobile app features and collaborated with senior developers."
+        "Developed responsive Flutter UI and integrated REST APIs using Provider.",
+        "Collaborated with senior developers on feature implementation, testing, and bug fixing.",
+        "Gained hands-on experience with Flutter architecture and production app development."
       ]
     }
   ];
@@ -286,9 +285,9 @@ class AppStrings {
 
   // Statistics
   static const List<Map<String, dynamic>> statsData = [
-    {"value": "3+", "label": "Years Experience"},
-    {"value": "20+", "label": "Projects Completed"},
-    {"value": "6+", "label": "Live Applications"},
+    {"value": "4+", "label": "Years Experience"},
+    {"value": "15+", "label": "Apps Delivered"},
+    {"value": "100K+", "label": "Downloads Reach"},
     {"value": "100%", "label": "Client Satisfaction"},
   ];
 

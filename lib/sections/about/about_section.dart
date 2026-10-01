@@ -149,34 +149,40 @@ class _AboutSectionState extends State<AboutSection> {
   Widget _buildHighlightsGrid(TextTheme textTheme) {
     final highlights = [
       {
-        "title": "Flutter Expert",
-        "desc": "Deep knowledge of Flutter frameworks, layouts, and engine lifecycle.",
-        "icon": Icons.star_border,
+        "title": "Flutter & Dart Specialist",
+        "desc": "Deep mastery of Flutter engine, reactive state, custom animations, and responsive UIs.",
+        "icon": Icons.flutter_dash,
+        "color": AppColors.secondaryAccent,
       },
       {
-        "title": "Cross Platform",
-        "desc": "Write code once that compiles perfectly to Android, iOS, and Web platforms.",
-        "icon": Icons.devices,
+        "title": "Dual-Platform Android & iOS",
+        "desc": "Seamless native deployment across Play Store & App Store Connect with high ratings.",
+        "icon": Icons.apple_rounded,
+        "color": AppColors.primaryAccent,
       },
       {
-        "title": "Native Integration",
-        "desc": "Experienced in building native bridges (Swift, Kotlin) and custom platform channels.",
-        "icon": Icons.extension,
+        "title": "Clean Architecture & MVVM",
+        "desc": "Enterprise code structures using SOLID principles, separation of concerns, and clean testing.",
+        "icon": Icons.layers_rounded,
+        "color": AppColors.violetAccent,
       },
       {
-        "title": "Performance Tuning",
-        "desc": "Optimize rendering pipelines, memory usage, and loading states.",
-        "icon": Icons.speed,
+        "title": "100K+ Production Reach",
+        "desc": "Proven track record delivering 15+ live applications trusted by over 100,000 active users.",
+        "icon": Icons.groups_rounded,
+        "color": AppColors.greenAccent,
       },
       {
-        "title": "Beautiful UI",
-        "desc": "Translate complex designs into responsive pixel-perfect layouts.",
-        "icon": Icons.palette_outlined,
+        "title": "Payment & Backend Integrations",
+        "desc": "Razorpay, Stripe, CCAvenue, Mollie, Firebase Auth/Firestore, and Supabase integrations.",
+        "icon": Icons.payments_rounded,
+        "color": AppColors.orangeAccent,
       },
       {
-        "title": "Clean Architecture",
-        "desc": "Scale projects using MVVM patterns and modular structure.",
-        "icon": Icons.layers_outlined,
+        "title": "Team Leadership & Mentoring",
+        "desc": "Leading sprint planning, architectural design reviews, client syncs, and mentoring engineers.",
+        "icon": Icons.verified_user_rounded,
+        "color": AppColors.secondaryAccent,
       },
     ];
 
@@ -187,52 +193,66 @@ class _AboutSectionState extends State<AboutSection> {
         crossAxisCount: 2,
         crossAxisSpacing: 16,
         mainAxisSpacing: 16,
-        mainAxisExtent: 110,
+        mainAxisExtent: 115,
       ),
       itemCount: highlights.length,
       itemBuilder: (context, idx) {
         final item = highlights[idx];
-        return Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: AppColors.primaryAccent.withOpacity(0.08),
-                shape: BoxShape.circle,
+        final col = item["color"] as Color;
+        return Container(
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: col.withOpacity(0.04),
+            borderRadius: BorderRadius.circular(14),
+            border: Border.all(color: col.withOpacity(0.18), width: 1),
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: col.withOpacity(0.12),
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  item["icon"] as IconData,
+                  color: col,
+                  size: 18,
+                ),
               ),
-              child: Icon(
-                item["icon"] as IconData,
-                color: AppColors.primaryAccent,
-                size: 20,
-              ),
-            ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    item["title"] as String,
-                    style: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 6),
-                  Expanded(
-                    child: Text(
-                      item["desc"] as String,
-                      style: textTheme.bodyMedium?.copyWith(
-                        color: AppColors.textSecondary,
-                        fontSize: 13,
-                        height: 1.4,
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      item["title"] as String,
+                      style: textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
                       ),
-                      maxLines: 3,
+                      maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
-                  ),
-                ],
+                    const SizedBox(height: 4),
+                    Expanded(
+                      child: Text(
+                        item["desc"] as String,
+                        style: textTheme.bodyMedium?.copyWith(
+                          color: AppColors.textSecondary,
+                          fontSize: 12,
+                          height: 1.35,
+                        ),
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         );
       },
     ).animate(target: _animate ? 1 : 0).fadeIn(delay: 350.ms, duration: 600.ms);
@@ -240,20 +260,46 @@ class _AboutSectionState extends State<AboutSection> {
 
   Widget _buildStatsGrid(TextTheme textTheme) {
     final size = MediaQuery.of(context).size;
+    final statColors = [
+      AppColors.secondaryAccent,
+      AppColors.primaryAccent,
+      AppColors.greenAccent,
+      AppColors.orangeAccent,
+    ];
+    final statIcons = [
+      Icons.work_history_rounded,
+      Icons.rocket_launch_rounded,
+      Icons.trending_up_rounded,
+      Icons.sentiment_very_satisfied_rounded,
+    ];
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         if (size.width >= 900) ...[
-          Text(
-            "Metrics",
-            style: textTheme.headlineSmall?.copyWith(
-              fontWeight: FontWeight.bold,
-              color: AppColors.textPrimary,
-            ),
+          Row(
+            children: [
+              Container(
+                width: 4,
+                height: 18,
+                decoration: BoxDecoration(
+                  color: AppColors.secondaryAccent,
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Text(
+                "Key Metrics & Milestones",
+                style: textTheme.headlineSmall?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  color: AppColors.textPrimary,
+                ),
+              ),
+            ],
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 20),
         ],
-        // Build cards for stats
         ListView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
@@ -262,8 +308,9 @@ class _AboutSectionState extends State<AboutSection> {
             final stat = AppStrings.statsData[index];
             final rawValue = stat["value"] as String;
             final label = stat["label"] as String;
+            final col = statColors[index % statColors.length];
+            final icon = statIcons[index % statIcons.length];
 
-            // Extract numeric part for counter
             final numericStr = RegExp(r'\d+').stringMatch(rawValue) ?? "0";
             final targetVal = int.parse(numericStr);
             final suffix = rawValue.replaceAll(numericStr, "");
@@ -271,25 +318,37 @@ class _AboutSectionState extends State<AboutSection> {
             return Padding(
               padding: const EdgeInsets.only(bottom: 16),
               child: GlassCard(
-                padding: const EdgeInsets.all(20),
+                glowColor: col,
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
                 hasHoverEffect: true,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      label,
-                      style: textTheme.bodyLarge?.copyWith(
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.textSecondary,
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: col.withOpacity(0.12),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Icon(icon, color: col, size: 22),
+                    ),
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: Text(
+                        label,
+                        style: textTheme.bodyLarge?.copyWith(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 15,
+                          color: AppColors.textPrimary,
+                        ),
                       ),
                     ),
                     AnimatedCounter(
                       targetValue: targetVal,
                       suffix: suffix,
                       style: textTheme.displaySmall!.copyWith(
-                        color: AppColors.secondaryAccent,
+                        color: col,
                         fontWeight: FontWeight.bold,
-                        fontFamily: 'Outfit',
+                        fontSize: 28,
                       ),
                     ),
                   ],

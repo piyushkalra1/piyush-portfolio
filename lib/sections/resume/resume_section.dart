@@ -18,11 +18,10 @@ class _ResumeSectionState extends State<ResumeSection> {
   bool _animate = false;
 
   Future<void> _downloadResume() async {
-    // In compiled Flutter web, assets are served at assets/assets/resume/Piyush_Kalra_Resume.pdf
     const url = 'assets/assets/resume/Piyush_Kalra_Resume.pdf';
     final uri = Uri.parse(url);
     if (await launchUrl(uri)) {
-      // PDF opened in browser tab
+      // PDF opened in browser tab / download triggered
     }
   }
 
@@ -54,7 +53,7 @@ class _ResumeSectionState extends State<ResumeSection> {
               children: [
                 // Section Title
                 _buildSectionHeader(textTheme),
-                const SizedBox(height: 60),
+                const SizedBox(height: 50),
 
                 // Resume layout
                 if (isCompact)
@@ -68,13 +67,13 @@ class _ResumeSectionState extends State<ResumeSection> {
                   )
                 else
                   Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Expanded(
                         flex: 6,
                         child: _buildResumePreview(textTheme),
                       ),
-                      const SizedBox(width: 60),
+                      const SizedBox(width: 50),
                       Expanded(
                         flex: 4,
                         child: _buildCTAPanel(textTheme, center: false),
@@ -94,7 +93,7 @@ class _ResumeSectionState extends State<ResumeSection> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "RESUME",
+          "RESUME & CREDENTIALS",
           style: textTheme.labelLarge?.copyWith(
             color: AppColors.primaryAccent,
             letterSpacing: 1.5,
@@ -103,7 +102,7 @@ class _ResumeSectionState extends State<ResumeSection> {
         ),
         const SizedBox(height: 8),
         Text(
-          "CV & Credentials",
+          "Curriculum Vitae",
           style: textTheme.displayMedium?.copyWith(
             fontWeight: FontWeight.bold,
             letterSpacing: -1.0,
@@ -134,84 +133,114 @@ class _ResumeSectionState extends State<ResumeSection> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    AppStrings.devName,
-                    style: textTheme.headlineMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: -0.5,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      AppStrings.devName,
+                      style: textTheme.headlineMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: -0.5,
+                        fontSize: 22,
+                      ),
                     ),
-                  ),
-                  Text(
-                    AppStrings.devRole,
-                    style: textTheme.titleMedium?.copyWith(
-                      color: AppColors.primaryAccent,
-                      fontWeight: FontWeight.w600,
+                    const SizedBox(height: 2),
+                    Text(
+                      "Flutter Developer | Android & iOS App Developer",
+                      style: textTheme.titleMedium?.copyWith(
+                        color: AppColors.primaryAccent,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 13.5,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(AppStrings.emailAddress, style: textTheme.bodySmall),
-                  Text(AppStrings.phoneNumber, style: textTheme.bodySmall),
-                ],
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                decoration: BoxDecoration(
+                  color: AppColors.greenAccent.withOpacity(0.12),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: AppColors.greenAccent.withOpacity(0.3), width: 1),
+                ),
+                child: const Text(
+                  "4+ Years Exp",
+                  style: TextStyle(
+                    color: AppColors.greenAccent,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 11.5,
+                  ),
+                ),
               ),
             ],
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 8),
+          Text(
+            "${AppStrings.devLocation} | ${AppStrings.phoneNumber} | ${AppStrings.emailAddress}",
+            style: textTheme.bodySmall?.copyWith(color: AppColors.textMuted, fontSize: 11.5),
+          ),
+          const SizedBox(height: 20),
           const Divider(color: AppColors.borderLight, height: 1),
-          const SizedBox(height: 24),
+          const SizedBox(height: 20),
 
           // Summary mock section
           _buildPreviewSectionHeader("PROFESSIONAL SUMMARY", textTheme),
-          const SizedBox(height: 12),
+          const SizedBox(height: 8),
           Text(
-            AppStrings.devAboutShort,
-            style: textTheme.bodyMedium?.copyWith(color: AppColors.textSecondary, height: 1.4),
+            "Flutter Developer with 4 years of experience (since October 2022) building scalable Android and iOS applications using Flutter and Dart. Delivered 15+ production applications published on Google Play Store and Apple App Store with a combined reach of 100K+ downloads. Experienced in leading development teams, mentoring Flutter developers, direct client communication, and delivering end-to-end mobile solutions from architecture to deployment.",
+            style: textTheme.bodyMedium?.copyWith(color: AppColors.textSecondary, height: 1.45, fontSize: 12.5),
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 22),
 
-          // Experience mock section (Summary of last roles)
-          _buildPreviewSectionHeader("RECENT EXPERIENCE", textTheme),
-          const SizedBox(height: 16),
+          // Experience mock section (Summary of roles)
+          _buildPreviewSectionHeader("WORK EXPERIENCE", textTheme),
+          const SizedBox(height: 12),
           _buildPreviewExperienceItem(
-            "Senior Flutter Developer",
-            "Inventco Infotech | Aug 2024 - Present",
-            "Develop and maintain complex challenge and cash apps, mentor junior developers.",
+            "Flutter Developer (Lead)",
+            "Inventco Software Pvt. Ltd., Jaipur",
+            "Aug 2024 – Present",
+            "Led Flutter app development for Android & iOS to production; managed developer team & code reviews; client requirement gathering.",
             textTheme,
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 14),
           _buildPreviewExperienceItem(
             "Flutter Developer",
-            "Solvebee IT Services | Feb 2023 - Aug 2024",
-            "Designed and built Bonanza Care, Probus Insurance, and Government RAS Club.",
+            "Solvebee IT Services Pvt. Ltd.",
+            "Feb 2023 – Aug 2024",
+            "Developed multiple production applications (healthcare, insurance, hospitality); performance optimization; App Store & Play Store publishing.",
             textTheme,
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 14),
+          _buildPreviewExperienceItem(
+            "Flutter Intern",
+            "Aimerse Technology",
+            "Oct 2022 – Dec 2022",
+            "Developed responsive Flutter UI, integrated REST APIs using Provider, and collaborated with senior engineers.",
+            textTheme,
+          ),
+          const SizedBox(height: 22),
 
           // Education mock section
-          _buildPreviewSectionHeader("EDUCATION", textTheme),
-          const SizedBox(height: 12),
+          _buildPreviewSectionHeader("EDUCATION & CERTIFICATIONS", textTheme),
+          const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 "Bachelor of Science (BSc)",
-                style: textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold, color: AppColors.textPrimary),
+                style: textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold, color: AppColors.textPrimary, fontSize: 13),
               ),
               Text(
-                "Jul 2017 - Jan 2021",
-                style: textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
+                "Raj Rishi Bhartrihari Matsya University",
+                style: textTheme.bodySmall?.copyWith(color: AppColors.textMuted, fontSize: 12),
               ),
             ],
           ),
+          const SizedBox(height: 4),
           Text(
-            "Raj Rishi Bhartri Bhartrihari Matsya University",
-            style: textTheme.bodySmall?.copyWith(color: AppColors.textSecondary),
+            "• Udemy Flutter Bootcamp  • Aimerse Internship Certificate  • Government RSCIT",
+            style: textTheme.bodySmall?.copyWith(color: AppColors.textSecondary, fontSize: 11.5),
           ),
         ],
       ),
@@ -225,13 +254,15 @@ class _ResumeSectionState extends State<ResumeSection> {
         color: AppColors.secondaryAccent,
         fontWeight: FontWeight.bold,
         letterSpacing: 1.0,
+        fontSize: 12,
       ),
     );
   }
 
   Widget _buildPreviewExperienceItem(
     String title,
-    String subtitle,
+    String company,
+    String duration,
     String desc,
     TextTheme textTheme,
   ) {
@@ -241,24 +272,26 @@ class _ResumeSectionState extends State<ResumeSection> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              title,
-              style: textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold, color: AppColors.textPrimary),
+            Expanded(
+              child: Text(
+                title,
+                style: textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold, color: AppColors.textPrimary, fontSize: 13.5),
+              ),
             ),
             Text(
-              subtitle.split('|')[1].trim(),
-              style: textTheme.bodySmall?.copyWith(color: AppColors.textMuted),
+              duration,
+              style: textTheme.bodySmall?.copyWith(color: AppColors.textMuted, fontSize: 11.5),
             ),
           ],
         ),
         Text(
-          subtitle.split('|')[0].trim(),
-          style: textTheme.bodySmall?.copyWith(color: AppColors.primaryAccent, fontWeight: FontWeight.w600),
+          company,
+          style: textTheme.bodySmall?.copyWith(color: AppColors.primaryAccent, fontWeight: FontWeight.w600, fontSize: 12),
         ),
         const SizedBox(height: 4),
         Text(
           desc,
-          style: textTheme.bodySmall?.copyWith(color: AppColors.textSecondary, height: 1.3),
+          style: textTheme.bodySmall?.copyWith(color: AppColors.textSecondary, height: 1.35, fontSize: 12),
         ),
       ],
     );
@@ -269,30 +302,87 @@ class _ResumeSectionState extends State<ResumeSection> {
       crossAxisAlignment: center ? CrossAxisAlignment.center : CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          "Looking for a printable copy?",
-          textAlign: center ? TextAlign.center : TextAlign.left,
-          style: textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(height: 12),
-        Text(
-          "Get the complete detailed ATS-friendly PDF resume showing my full list of projects, certifications, and developer attributes.",
-          textAlign: center ? TextAlign.center : TextAlign.left,
-          style: textTheme.bodyLarge?.copyWith(color: AppColors.textSecondary),
-        ),
-        const SizedBox(height: 32),
-        ElevatedButton(
-          onPressed: _downloadResume,
-          style: ElevatedButton.styleFrom(
-            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 20),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+          decoration: BoxDecoration(
+            color: AppColors.primaryAccent.withOpacity(0.12),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: AppColors.primaryAccent.withOpacity(0.3), width: 1),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: const [
-              Icon(Icons.download, size: 20),
-              SizedBox(width: 12),
-              Text("Download Resume PDF"),
+              Icon(Icons.description_rounded, size: 14, color: AppColors.secondaryAccent),
+              SizedBox(width: 6),
+              Text(
+                "UPDATED 2026 RESUME",
+                style: TextStyle(
+                  color: AppColors.secondaryAccent,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.0,
+                  fontSize: 11.5,
+                ),
+              ),
             ],
+          ),
+        ),
+        const SizedBox(height: 18),
+        Text(
+          "Get the Official 4-Year ATS Resume",
+          textAlign: center ? TextAlign.center : TextAlign.left,
+          style: textTheme.headlineSmall?.copyWith(
+            fontWeight: FontWeight.bold,
+            letterSpacing: -0.5,
+            fontSize: 24,
+          ),
+        ),
+        const SizedBox(height: 14),
+        Text(
+          "Download the official printable 2-page ATS resume detailing all 15+ production applications, technical stack (BLoC, Provider, GetX, Clean Architecture, Supabase, Firebase), store release metrics, and client deliverables.",
+          textAlign: center ? TextAlign.center : TextAlign.left,
+          style: textTheme.bodyLarge?.copyWith(
+            color: AppColors.textSecondary,
+            height: 1.6,
+            fontSize: 14.5,
+          ),
+        ),
+        const SizedBox(height: 28),
+        Container(
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              colors: [AppColors.primaryAccent, Color(0xFF4F46E5)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+            borderRadius: BorderRadius.circular(28),
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.primaryAccent.withOpacity(0.35),
+                blurRadius: 16,
+                offset: const Offset(0, 4),
+              ),
+            ],
+          ),
+          child: ElevatedButton(
+            onPressed: _downloadResume,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.transparent,
+              shadowColor: Colors.transparent,
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 18),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                Icon(Icons.download_rounded, size: 20),
+                SizedBox(width: 10),
+                Text(
+                  "Download Resume PDF",
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
           ),
         ),
       ],

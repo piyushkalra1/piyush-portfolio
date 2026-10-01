@@ -11,32 +11,50 @@ class MouseGlowContainer extends StatefulWidget {
 }
 
 class _MouseGlowContainerState extends State<MouseGlowContainer> {
-  Offset _mousePos = Offset.zero;
-  bool _isHovered = false;
+  final ValueNotifier<Offset> _mousePos = ValueNotifier<Offset>(Offset.zero);
+  final ValueNotifier<bool> _isHovered = ValueNotifier<bool>(false);
+
+  @override
+  void dispose() {
+    _mousePos.dispose();
+    _isHovered.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    // Only enable mouse glow on web/desktop and when pointer events are available
     if (kIsWeb) {
       return MouseRegion(
-        onEnter: (_) => setState(() => _isHovered = true),
-        onExit: (_) => setState(() => _isHovered = false),
+        onEnter: (_) => _isHovered.value = true,
+        onExit: (_) => _isHovered.value = false,
         onHover: (event) {
-          setState(() {
-            _mousePos = event.localPosition;
-          });
+          _mousePos.value = event.localPosition;
         },
         child: Stack(
           children: [
-            widget.child,
-            if (_isHovered)
-              Positioned.fill(
-                child: IgnorePointer(
-                  child: CustomPaint(
-                    painter: _GlowPainter(mousePosition: _mousePos),
+            RepaintBoundary(
+              child: widget.child,
+            ),
+            ValueListenableBuilder<bool>(
+              valueListenable: _isHovered,
+              builder: (context, hovered, _) {
+                if (!hovered) return const SizedBox.shrink();
+                return Positioned.fill(
+                  child: IgnorePointer(
+                    child: RepaintBoundary(
+                      child: ValueListenableBuilder<Offset>(
+                        valueListenable: _mousePos,
+                        builder: (context, pos, _) {
+                          return CustomPaint(
+                            painter: _GlowPainter(mousePosition: pos),
+                          );
+                        },
+                      ),
+                    ),
                   ),
-                ),
-              ),
+                );
+              },
+            ),
           ],
         ),
       );
@@ -54,12 +72,12 @@ class _GlowPainter extends CustomPainter {
     final paint = Paint()
       ..shader = RadialGradient(
         colors: [
-          AppColors.primaryAccent.withOpacity(0.08),
+          AppColors.primaryAccent.withOpacity(0.09),
           AppColors.secondaryAccent.withOpacity(0.03),
           Colors.transparent,
         ],
-        stops: const [0.0, 0.4, 1.0],
-        radius: 0.25,
+        stops: const [0.0, 0.45, 1.0],
+        radius: 0.28,
       ).createShader(Rect.fromLTWH(
         mousePosition.dx - size.width,
         mousePosition.dy - size.width,

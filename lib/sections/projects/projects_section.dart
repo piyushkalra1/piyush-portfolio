@@ -100,7 +100,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                                       color: color.withOpacity(0.05),
                                     ),
                                     child: Image.asset(
-                                      project.screenshots.first,
+                                      project.screenshots.isNotEmpty ? project.screenshots.first : '',
                                       fit: BoxFit.cover,
                                       errorBuilder: (context, error, stackTrace) => Container(
                                         color: AppColors.surfaceCard,
