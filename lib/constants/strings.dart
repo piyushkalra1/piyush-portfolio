@@ -359,22 +359,46 @@ class AppStrings {
     }
   ];
 
-  // Testimonials
+  // Testimonials & Client Reviews
   static const List<Map<String, dynamic>> testimonialsList = [
     {
-      "quote": "Piyush is a stellar developer. He took our legacy insurance application, modularized the dependencies, resolved all memory leaks, and added Razorpay/Stripe systems cleanly.",
-      "client": "Project Manager",
-      "company": "Solvebee It Services"
+      "headline": "Special thanks to Piyush for technical knowledge & practical solutions",
+      "quote": "A special thanks to Piyush for his technical knowledge, quick responses and great collaboration. He thought continuously and knew how to translate our wishes into practical solutions. The team successfully deployed the app on iOS and Android platforms.",
+      "client": "Branko Radovic",
+      "role": "CEO, Dunnnit",
+      "company": "Dunnnit • Abu Dhabi, UAE",
+      "rating": 5.0,
+      "source": "Clutch.co Verified Review",
+      "sourceBadge": "Verified 5.0 ★ on Clutch",
+      "sourceUrl": "https://clutch.co/profile/inventcolabs",
+      "sourceIcon": "clutch",
+      "project": "Dunnnit Wellness Platform (iOS & Android)",
     },
     {
-      "quote": "His clean MVVM architecture with Provider is outstanding. Code reviews are effortless, and he constantly mentors juniors on Flutter best practices. A solid asset to any tech team.",
-      "client": "Tech Lead",
-      "company": "Inventco Infotech"
+      "headline": "The team worked with us, not just for us",
+      "quote": "The team worked with us, not just for us. It wasn't just about building an app — it was about refining ideas, revisiting decisions, testing possibilities, and continuously improving the product together. Heartfelt appreciation to Piyush and the team for making this collaboration a success.",
+      "client": "Tim van den Berg",
+      "role": "Founder & Product Owner",
+      "company": "Spelenderwijs Verbeteren • Netherlands",
+      "rating": 5.0,
+      "source": "Instagram Video Reel",
+      "sourceBadge": "Watch Video Feedback ↗",
+      "sourceUrl": "https://www.instagram.com/reel/Daerh8kAkdn/?stkn=MTJpbXo0aDd2bHNqag==",
+      "sourceIcon": "instagram",
+      "project": "Korfball Training & Management Platform",
     },
     {
-      "quote": "Dunnit challenge app was built completely by Piyush. We needed complex animations, chats, dynamic links, and in-app billing. He completed everything on time and code quality is premium.",
-      "client": "Product Owner",
-      "company": "Dunnit Challenge Platform"
+      "headline": "Clean architecture, seamless payment & production stability",
+      "quote": "Piyush architected and delivered our multi-policy insurance application for Android & iOS with modular clean code, robust session management, and smooth payment gateway checkout with Razorpay and Stripe.",
+      "client": "Senior Product Team",
+      "role": "Project Leadership",
+      "company": "Probus Insurance Brokerage • Mumbai",
+      "rating": 5.0,
+      "source": "Enterprise Client Feedback",
+      "sourceBadge": "Enterprise Production Review",
+      "sourceUrl": "",
+      "sourceIcon": "verified",
+      "project": "Probus Insurance Android & iOS",
     }
   ];
 }
