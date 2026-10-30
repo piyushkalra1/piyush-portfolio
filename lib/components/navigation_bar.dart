@@ -26,9 +26,9 @@ class CustomNavigationBar extends StatelessWidget implements PreferredSizeWidget
         child: Container(
           height: preferredSize.height,
           decoration: BoxDecoration(
-            color: const Color(0xE6050508), // Frosted obsidian
+            color: const Color(0xCC030A18), // Frosted deep midnight sapphire
             border: const Border(
-              bottom: BorderSide(color: Color(0x1FFFFFFF), width: 1),
+              bottom: BorderSide(color: Color(0x2838BDF8), width: 1),
             ),
             boxShadow: [
               BoxShadow(

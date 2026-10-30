@@ -44,7 +44,7 @@ class _ResumeSectionState extends State<ResumeSection> {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 24),
         width: double.infinity,
-        color: AppColors.background,
+        color: Colors.transparent,
         child: Center(
           child: Container(
             constraints: const BoxConstraints(maxWidth: 1200),

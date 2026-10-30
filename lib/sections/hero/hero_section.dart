@@ -70,7 +70,7 @@ class _HeroSectionState extends State<HeroSection> with SingleTickerProviderStat
         ),
         clipBehavior: Clip.antiAlias,
         decoration: const BoxDecoration(
-          color: AppColors.background,
+          color: Colors.transparent,
         ),
         child: Stack(
           alignment: Alignment.center,

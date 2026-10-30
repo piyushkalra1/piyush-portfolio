@@ -26,7 +26,12 @@ class FooterSection extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      color: AppColors.background,
+      decoration: BoxDecoration(
+        color: AppColors.background.withOpacity(0.4),
+        border: const Border(
+          top: BorderSide(color: Color(0x2238BDF8), width: 1),
+        ),
+      ),
       padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 24),
       child: Center(
         child: Container(

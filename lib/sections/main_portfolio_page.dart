@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/components/navigation_bar.dart';
 import 'package:portfolio/constants/colors.dart';
 import 'package:portfolio/widgets/mouse_glow_container.dart';
+import 'package:portfolio/widgets/animated_background.dart';
 
 // Sections import (will be created in subsequent steps)
 import 'package:portfolio/sections/hero/hero_section.dart';
@@ -112,6 +113,11 @@ class _MainPortfolioPageState extends State<MainPortfolioPage> {
       body: MouseGlowContainer(
         child: Stack(
           children: [
+            // Full-Screen Animated Cosmic Sky & Blue Gradient Background
+            const Positioned.fill(
+              child: AnimatedBackground(),
+            ),
+
             // Scrollable Content
             Positioned.fill(
               child: SingleChildScrollView(

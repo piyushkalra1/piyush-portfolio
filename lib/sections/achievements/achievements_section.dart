@@ -36,7 +36,7 @@ class _AchievementsSectionState extends State<AchievementsSection> {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 24),
         width: double.infinity,
-        color: AppColors.surface,
+        color: Colors.transparent,
         child: Center(
           child: Container(
             constraints: const BoxConstraints(maxWidth: 1200),

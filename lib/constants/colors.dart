@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  // Primary Theme Colors
-  static const Color background = Color(0xFF030303);      // Obsidian Black
-  static const Color surface = Color(0xFF09090B);         // Zinc Black
-  static const Color surfaceCard = Color(0xFF18181B);     // Dark Gray surface
+  // Primary Deep Blue & Sky Theme Colors
+  static const Color background = Color(0xFF030816);      // Deep Midnight Sapphire
+  static const Color surface = Color(0xFF07152E);         // Deep Navy Blue
+  static const Color surfaceCard = Color(0xFF0D2240);     // Translucent Navy Card
   
-  // Accents & Gradients (Linear / Stripe style)
-  static const Color primaryAccent = Color(0xFF6366F1);   // Indigo Accent
-  static const Color secondaryAccent = Color(0xFF06B6D4); // Cyan Glow
+  // Accents & Gradients
+  static const Color primaryAccent = Color(0xFF38BDF8);   // Vibrant Sky Blue
+  static const Color secondaryAccent = Color(0xFF0284C7); // Rich Ocean Blue
+  static const Color royalBlue = Color(0xFF2563EB);        // Electric Royal Blue
+  static const Color sapphireBlue = Color(0xFF1D4ED8);     // Deep Sapphire
+  static const Color cyanAccent = Color(0xFF06B6D4);       // Electric Cyan
   static const Color violetAccent = Color(0xFF8B5CF6);    // Violet Glow
   static const Color pinkAccent = Color(0xFFEC4899);      // Pink Glow
   static const Color orangeAccent = Color(0xFFF97316);    // Orange Glow
@@ -17,17 +20,23 @@ class AppColors {
   
   // Neutral Text Colors
   static const Color textPrimary = Color(0xFFFAFAFA);     // Ice White
-  static const Color textSecondary = Color(0xFFA1A1AA);   // Slate/Zinc Grey
-  static const Color textMuted = Color(0xFF71717A);       // Darker Grey
+  static const Color textSecondary = Color(0xFF94A3B8);   // Slate Sky Tint
+  static const Color textMuted = Color(0xFF64748B);       // Darker Slate
   
   // Borders and Glassmorphism
-  static const Color borderLight = Color(0x1AFFFFFF);     // 10% Opacity Border
-  static const Color glassBg = Color(0x0CFFFFFF);         // 5% Frosted Glass Bg
-  static const Color glassHighlight = Color(0x1F6366F1);  // Translucent Indigo
+  static const Color borderLight = Color(0x2438BDF8);     // 14% Sky Blue Border
+  static const Color glassBg = Color(0x1407152E);         // Frosted Navy Glass
+  static const Color glassHighlight = Color(0x2638BDF8);  // Translucent Sky Blue
 
   // Gradients
   static const Gradient heroGradient = LinearGradient(
-    colors: [primaryAccent, secondaryAccent],
+    colors: [primaryAccent, royalBlue],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  static const Gradient skyGradient = LinearGradient(
+    colors: [Color(0xFF38BDF8), Color(0xFF0284C7), Color(0xFF1D4ED8)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );

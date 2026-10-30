@@ -44,19 +44,7 @@ class _SkillsSectionState extends State<SkillsSection> {
         width: double.infinity,
         clipBehavior: Clip.antiAlias,
         decoration: const BoxDecoration(
-          // Rich modern space mesh gradient
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Color(0xFF030508), // deep space black
-              Color(0xFF070C1A), // midnight indigo
-              Color(0xFF050812), // deep slate
-              Color(0xFF080616), // subtle dark violet
-              Color(0xFF020305), // smooth base
-            ],
-            stops: [0.0, 0.28, 0.55, 0.82, 1.0],
-          ),
+          color: Colors.transparent,
         ),
         child: Stack(
           alignment: Alignment.center,

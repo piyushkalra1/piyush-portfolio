@@ -34,8 +34,8 @@ class _GlassCardState extends State<GlassCard> {
         : AppColors.borderLight;
         
     final cardBg = _isHovered && widget.hasHoverEffect
-        ? (widget.glowColor ?? AppColors.primaryAccent).withOpacity(0.06)
-        : AppColors.glassBg;
+        ? (widget.glowColor ?? AppColors.primaryAccent).withOpacity(0.09)
+        : const Color(0x3307152E); // Frosted translucent sapphire glass
 
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
