@@ -9,6 +9,8 @@ class ProjectModel {
   final List<String> screenshots;
   final List<String> responsibilities;
   final double accentHue; // Used to generate custom project-specific gradient blobs
+  final String category;
+  final String? highlightBadge;
 
   const ProjectModel({
     required this.id,
@@ -21,5 +23,7 @@ class ProjectModel {
     required this.screenshots,
     required this.responsibilities,
     required this.accentHue,
+    this.category = "General",
+    this.highlightBadge,
   });
 }

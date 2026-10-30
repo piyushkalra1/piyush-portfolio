@@ -57,6 +57,7 @@ flutter:
     - assets/screenshots/govt_ras/
     - assets/screenshots/splenderwijs/
     - assets/screenshots/nawi/
+    - assets/screenshots/blb_librarian/
     - assets/screenshots/planit/
 
   # An image asset can refer to one or more resolution-specific "variants", see

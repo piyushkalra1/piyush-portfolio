@@ -3,10 +3,10 @@ import 'package:portfolio/models/project_model.dart';
 class AppStrings {
   // Profile / Hero
   static const String devName = "Piyush Kalra";
-  static const String devRole = "Senior Flutter Developer";
-  static const String devLocation = "Jaipur, India";
-  static const String devAboutShort = "Senior Flutter Developer with 4+ years of experience specializing in high-performance Android, iOS, and Web applications using Clean Architecture, robust state management, and modern design systems.";
-  static const String devAboutLong = "I am a passionate Flutter Developer with 4 years of production experience (since October 2022) building scalable Android and iOS applications using Flutter and Dart. Delivered 15+ production applications published on the Google Play Store and Apple App Store with a combined reach of 100K+ downloads. Experienced in leading development teams, mentoring Flutter developers, handling direct client communication, gathering requirements, and delivering end-to-end mobile solutions from architecture to deployment.";
+  static const String devRole = "Lead Flutter Engineer & Mobile Consultant";
+  static const String devLocation = "Jaipur, India (Open to Remote & Relocation)";
+  static const String devAboutShort = "Senior Flutter Developer with 4+ years of production experience specializing in high-performance Android, iOS, and Web applications using Clean Architecture, Hardware/IoT (NFC/RFID), in-app subscriptions, and high-converting MVPs.";
+  static const String devAboutLong = "I am a Lead Flutter Developer & Mobile Consultant with 4+ years of production experience (since October 2022) architecting scalable Android and iOS applications. Delivered 15+ production applications published on the Google Play Store and Apple App Store with 100K+ combined downloads. Proven track record leading Flutter development teams, working directly with global clients (US, Europe, Middle East), integrating hardware/IoT devices (NFC/RFID tag scanners), building in-app subscription engines, and shipping enterprise-grade code that drives real business revenue.";
 
   // Social Links
   static const String githubUrl = "https://github.com/piyush-kalra";
@@ -18,39 +18,40 @@ class AppStrings {
   static const Map<String, List<Map<String, dynamic>>> skillsData = {
     "Languages": [
       {"name": "Dart", "level": 0.98},
-      {"name": "Java", "level": 0.80},
       {"name": "Kotlin", "level": 0.85},
-      {"name": "Swift", "level": 0.75},
+      {"name": "Swift", "level": 0.78},
+      {"name": "Java", "level": 0.80},
     ],
     "Frameworks & SDKs": [
-      {"name": "Flutter (Android & iOS)", "level": 0.98},
-      {"name": "RESTful APIs", "level": 0.95},
-      {"name": "Google Maps & Deep Linking", "level": 0.90},
+      {"name": "Flutter (Android, iOS & Web)", "level": 0.98},
+      {"name": "NFC & RFID Tag Integration", "level": 0.94},
+      {"name": "RESTful APIs & WebSockets", "level": 0.96},
+      {"name": "Google Maps & Deep Linking", "level": 0.92},
       {"name": "Agora Video/Voice Calling", "level": 0.88},
     ],
-    "Backend & Services": [
+    "Backend & Cloud Services": [
       {"name": "Firebase Suite (Auth, Firestore, DB)", "level": 0.95},
       {"name": "Push Notifications (FCM & PushKit)", "level": 0.95},
-      {"name": "Supabase", "level": 0.88},
-      {"name": "Crashlytics & Dynamic Links", "level": 0.92},
+      {"name": "Supabase & PostgreSQL", "level": 0.88},
+      {"name": "Crashlytics & App Performance", "level": 0.94},
     ],
     "State Management": [
-      {"name": "BLoC / Cubit", "level": 0.92},
+      {"name": "BLoC / Cubit", "level": 0.94},
       {"name": "Provider", "level": 0.96},
       {"name": "GetX", "level": 0.94},
       {"name": "Riverpod", "level": 0.88},
     ],
-    "Architecture & Storage": [
+    "Architecture & Security": [
       {"name": "Clean Architecture & MVVM", "level": 0.96},
-      {"name": "SOLID Principles & Repository", "level": 0.92},
-      {"name": "SQLite, Hive & SharedPreferences", "level": 0.90},
-      {"name": "Flutter Secure Storage", "level": 0.92},
+      {"name": "SOLID Principles & Repository Pattern", "level": 0.94},
+      {"name": "Kiosk Mode & App Pinning", "level": 0.90},
+      {"name": "SQLite, Hive & Secure Storage", "level": 0.92},
     ],
-    "Payment & Publishing": [
-      {"name": "Razorpay, Stripe & CCAvenue", "level": 0.94},
-      {"name": "Google Pay, Apple Pay & Mollie", "level": 0.90},
-      {"name": "Google Play Console Publishing", "level": 0.95},
-      {"name": "Apple App Store Connect Release", "level": 0.92},
+    "Payments, Subscriptions & Release": [
+      {"name": "In-App Purchases & Subscriptions", "level": 0.94},
+      {"name": "Razorpay, Stripe & CCAvenue", "level": 0.95},
+      {"name": "Google Play Console Publishing", "level": 0.96},
+      {"name": "Apple App Store Connect & TestFlight", "level": 0.94},
     ],
   };
 
@@ -61,12 +62,12 @@ class AppStrings {
       "company": "Inventco Software Pvt. Ltd., Jaipur",
       "location": "Jaipur, India",
       "duration": "Aug 2024 - Present",
-      "description": "Led Flutter development for Android and iOS applications from development to production release.",
+      "description": "Leading Flutter architecture and development for enterprise and hardware/IoT applications from concept to store release.",
       "responsibilities": [
-        "Led Flutter development for Android and iOS applications from development to production.",
-        "Managed a team of Flutter developers, conducted code reviews, and mentored junior engineers.",
-        "Handled direct client meetings, requirement gathering, sprint planning, and solution discussions.",
-        "Built scalable applications using Flutter, MVVM, Clean Architecture, Firebase, REST APIs, and Bloc/GetX."
+        "Spearheaded development of BLB Librarian (Better Letter Book) connecting physical books via NFC/RFID tag scanning with parental safety Kiosk mode.",
+        "Managed a team of Flutter developers, established CI/CD pipelines, conducted rigorous code reviews, and mentored junior engineers.",
+        "Handled direct client meetings with international stakeholders, sprint planning, and system architecture design.",
+        "Built scalable apps using Clean Architecture, BLoC/Provider, Firebase, REST APIs, and native platform channels."
       ]
     },
     {
@@ -74,12 +75,12 @@ class AppStrings {
       "company": "Solvebee IT Services Pvt. Ltd.",
       "location": "Jaipur, India",
       "duration": "Feb 2023 - Aug 2024",
-      "description": "Developed and maintained multiple production applications across healthcare, insurance, and hospitality domains.",
+      "description": "Developed and maintained multiple high-traffic production applications across healthcare, fintech, insurance, and hospitality domains.",
       "responsibilities": [
-        "Developed and maintained multiple production Flutter applications across healthcare, insurance, and hospitality domains.",
-        "Improved application performance, fixed production issues, and delivered new features in Agile sprints.",
-        "Published and maintained Android and iOS applications on the Play Store and App Store.",
-        "Integrated REST APIs, payment gateways (Razorpay, Stripe, CCAvenue), and local database storage."
+        "Engineered production Flutter applications including Probus Insurance and Govt RAS Club with 100K+ cumulative reach.",
+        "Integrated multi-gateway payment checkouts (Stripe, Razorpay, CCAvenue) with encrypted session caching.",
+        "Published and maintained Android and iOS applications on Google Play Store and Apple App Store.",
+        "Improved application performance, reduced app launch times by 35%, and eliminated memory leaks."
       ]
     },
     {
@@ -87,17 +88,50 @@ class AppStrings {
       "company": "Aimerse Technology",
       "location": "Jaipur / Remote",
       "duration": "Oct 2022 - Dec 2022",
-      "description": "Gained hands-on experience with Flutter architecture, responsive UI development, and API integration.",
+      "description": "Hands-on engineering with Flutter architecture, responsive cross-platform UI, and REST API integration.",
       "responsibilities": [
-        "Developed responsive Flutter UI and integrated REST APIs using Provider.",
-        "Collaborated with senior developers on feature implementation, testing, and bug fixing.",
-        "Gained hands-on experience with Flutter architecture and production app development."
+        "Developed responsive Flutter UI widgets and integrated REST APIs using Provider state management.",
+        "Collaborated with senior engineers on feature implementation, automated unit testing, and bug fixing.",
+        "Gained deep foundation in Flutter framework internals and mobile lifecycle management."
       ]
     }
   ];
 
   // Projects Configuration List
   static final List<ProjectModel> projectsList = [
+    ProjectModel(
+      id: "blb_librarian",
+      name: "BLB Librarian (Better Letter Book)",
+      shortDescription: "IoT smart learning app connecting physical books via NFC/RFID with child safety kiosk mode.",
+      description: "BLB Librarian (Better Letter Book) is a pioneering EdTech and Hardware/IoT mobile ecosystem bridging tactile physical books with rich digital multimedia. Parents scan physical books via instant NFC/RFID tag scanning, manage multiple child profiles ('Little Ones'), and activate a secure Child Safety Kiosk Mode restricting access strictly to parent-assigned content. Features real-time media quota tracking, device licensing, and flexible in-app tiered billing (Free, Family, Premium).",
+      technologies: ["Flutter", "NFC / RFID Scanning", "Child Safety / Kiosk Mode", "In-App Subscriptions", "Clean Architecture", "Media Caching", "REST APIs", "Device Quotas"],
+      playStoreUrl: "https://play.google.com/store/apps/details?id=com.blb.librarian",
+      features: [
+        "NFC & RFID Tag Scanning: Instant book pairing by simply tapping physical books to the smartphone",
+        "Parental Child Profiles: Add & manage multiple 'Little Ones' with individual book access permissions",
+        "Child Safety Kiosk Mode: App-pinning safety lock ensuring children only experience parent-curated content",
+        "Rich Multimedia Synchronisation: Associating physical books with stories, audio phonics, videos, and flashcards",
+        "Device & Quota Monitoring: Real-time visualization of media storage consumption and connected device count",
+        "Multi-Tier In-App Subscriptions: Flexible monthly and yearly subscription plans (Free, Family, Premium)"
+      ],
+      screenshots: [
+        "assets/screenshots/blb_librarian/blb1.png",
+        "assets/screenshots/blb_librarian/blb2.png",
+        "assets/screenshots/blb_librarian/blb3.png",
+        "assets/screenshots/blb_librarian/blb4.png",
+        "assets/screenshots/blb_librarian/blb5.png",
+      ],
+      responsibilities: [
+        "Engineered native NFC/RFID reader interfaces and protocol parsing for instant book tag resolution.",
+        "Implemented secure Kiosk / Safety Mode preventing unauthorized app escape during children's reading sessions.",
+        "Designed and architected the parental Little Ones multi-profile access delegation system.",
+        "Integrated in-app billing subscriptions and dynamic media storage quota calculations.",
+        "Crafted high-fidelity custom UI with interactive audio playback and smooth asset caching."
+      ],
+      accentHue: 195.0, // Vibrant Cyan-Blue Theme matching the BLB interface
+      category: "IoT & Hardware",
+      highlightBadge: "IoT & NFC / RFID Flagship",
+    ),
     ProjectModel(
       id: "dunnit",
       name: "Dunnit",
@@ -119,8 +153,6 @@ class AppStrings {
         "assets/screenshots/dunnit/dunnit3.png",
         "assets/screenshots/dunnit/dunnit4.png",
         "assets/screenshots/dunnit/dunnit5.png",
-        // "assets/screenshots/dunnit/screenshot2.png",
-        // "assets/screenshots/dunnit/screenshot3.png",
       ],
       responsibilities: [
         "Architected code structure using clean MVVM with Provider state management.",
@@ -129,6 +161,8 @@ class AppStrings {
         "Set up real-time WebSockets/Firestore notifications and group chat system."
       ],
       accentHue: 270.0, // Violet-Purple Theme
+      category: "Social & Habits",
+      highlightBadge: "Clutch 5.0 Rated ★",
     ),
     ProjectModel(
       id: "probus",
@@ -150,8 +184,6 @@ class AppStrings {
         "assets/screenshots/probus/prrobus2.png",
         "assets/screenshots/probus/prrobus3.png",
         "assets/screenshots/probus/prrobus4.png",
-        // "assets/screenshots/probus/screenshot2.png",
-        // "assets/screenshots/probus/screenshot3.png",
       ],
       responsibilities: [
         "Built the client checkout UI from scratch using responsive styling rules.",
@@ -160,6 +192,8 @@ class AppStrings {
         "Ensured seamless deployment to Apple App Store and Google Play Store."
       ],
       accentHue: 210.0, // Indigo-Blue Theme
+      category: "Fintech & Enterprise",
+      highlightBadge: "Enterprise Fintech",
     ),
     ProjectModel(
       id: "govt_ras",
@@ -182,8 +216,6 @@ class AppStrings {
         "assets/screenshots/govt_ras/ras3.png",
         "assets/screenshots/govt_ras/ras4.png",
         "assets/screenshots/govt_ras/ras5.png",
-        // "assets/screenshots/govt_ras/screenshot2.png",
-        // "assets/screenshots/govt_ras/screenshot3.png",
       ],
       responsibilities: [
         "Designed the complex calendar scheduling widget for room booking.",
@@ -192,6 +224,8 @@ class AppStrings {
         "Collaborated with government IT representatives to ensure compliance."
       ],
       accentHue: 30.0, // Orange-Bronze Theme
+      category: "Fintech & Enterprise",
+      highlightBadge: "Govt. Platform",
     ),
     ProjectModel(
       id: "splenderwijs",
@@ -213,8 +247,6 @@ class AppStrings {
         "assets/screenshots/splenderwijs/spelender3.png",
         "assets/screenshots/splenderwijs/spelender4.png",
         "assets/screenshots/splenderwijs/spelender5.png",
-        // "assets/screenshots/splenderwijs/screenshot2.png",
-        // "assets/screenshots/splenderwijs/screenshot3.png",
       ],
       responsibilities: [
         "Developed custom canvas progress charts and badge reward animations.",
@@ -223,6 +255,8 @@ class AppStrings {
         "Built responsive grid layouts compatible with tablets and chromebooks."
       ],
       accentHue: 150.0, // Teal-Emerald Theme
+      category: "E-Learning",
+      highlightBadge: "Client Verified ↗",
     ),
     ProjectModel(
       id: "nawi",
@@ -243,8 +277,6 @@ class AppStrings {
         "assets/screenshots/nawi/nawi2.png",
         "assets/screenshots/nawi/nawi3.png",
         "assets/screenshots/nawi/nawi4.png",
-        // "assets/screenshots/nawi/screenshot2.png",
-        // "assets/screenshots/nawi/screenshot3.png",
       ],
       responsibilities: [
         "Developed the native platform bridges (Swift/Kotlin) for importing phone contact lists.",
@@ -253,6 +285,8 @@ class AppStrings {
         "Polished UI micro-interactions using custom animators."
       ],
       accentHue: 330.0, // Magenta-Pink Theme
+      category: "Social & Habits",
+      highlightBadge: "Event Tech",
     ),
     ProjectModel(
       id: "planit",
@@ -280,6 +314,8 @@ class AppStrings {
         "Implemented real-time client booking alerts using socket-based messaging."
       ],
       accentHue: 0.0, // Rose-Red Theme
+      category: "Productivity",
+      highlightBadge: "SaaS Tool",
     ),
   ];
 
@@ -294,44 +330,34 @@ class AppStrings {
   // Services
   static const List<Map<String, dynamic>> servicesData = [
     {
-      "title": "Flutter App Development",
-      "description": "Cross-platform mobile apps for Android and iOS using Clean Architecture and responsive UI design.",
+      "title": "MVP to Store in 4-6 Weeks",
+      "description": "Rapid turnaround for startups & founders. Architecting complete, production-ready MVPs with payment gateways, auth, and store publishing.",
+      "iconName": "rocket_launch"
+    },
+    {
+      "title": "Hardware & IoT Mobile Integration",
+      "description": "Connecting Flutter mobile apps with physical hardware using NFC tag scanning, RFID readers, Bluetooth Low Energy (BLE), and Kiosk safety mode.",
+      "iconName": "nfc"
+    },
+    {
+      "title": "Enterprise Flutter Architecture",
+      "description": "Scalable cross-platform Android & iOS codebases following Clean Architecture, BLoC/Provider, SOLID principles, and high test coverage.",
       "iconName": "phone_iphone"
     },
     {
-      "title": "Android App Development",
-      "description": "Native-caliber Android app structures utilizing Kotlin integrations and performance-optimized layouts.",
-      "iconName": "android"
+      "title": "In-App Purchases & Subscriptions",
+      "description": "End-to-end integration of Apple StoreKit & Google Play Billing, tiered subscriptions, dynamic paywalls, and quota management.",
+      "iconName": "payments"
     },
     {
-      "title": "iOS App Development",
-      "description": "High-fidelity iOS applications with CocoaPods, Apple Pay, PushKit, CallKit, and native Swift components.",
-      "iconName": "apple"
+      "title": "Performance Tuning & UI Overhauls",
+      "description": "Eliminating jank for buttery 60/120 FPS rendering, profiling memory leaks, optimizing startup times, and revamping legacy mobile UI.",
+      "iconName": "speed"
     },
     {
-      "title": "Firebase Integration",
-      "description": "Firestore databases, Cloud Functions, FCM notifications, dynamic links, storage buckets, and auth protocols.",
-      "iconName": "local_fire_department"
-    },
-    {
-      "title": "API Integration",
-      "description": "Fast and secure REST APIs, WebSockets, payment portals (Razorpay, Stripe, CCAvenue), and local database sync.",
-      "iconName": "sync_alt"
-    },
-    {
-      "title": "Bug Fixing & Tuning",
-      "description": "Performance profiling, UI rendering optimization, memory leak tracing, and upgrading deprecated plugins.",
-      "iconName": "bug_report"
-    },
-    {
-      "title": "App Publishing",
-      "description": "Roster management, App Store Connect, Google Play Console release config, testing tracks, and app store SEO.",
+      "title": "Store Publishing & App Store SEO",
+      "description": "Full release management on Apple App Store and Google Play Console, metadata optimization, privacy policy compliance, and approval guidance.",
       "iconName": "publish"
-    },
-    {
-      "title": "Flutter Consultation",
-      "description": "Technical planning, state management comparisons, clean folder architecture guidance, and project audits.",
-      "iconName": "forum"
     },
   ];
 

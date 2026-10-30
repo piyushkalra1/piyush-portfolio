@@ -55,7 +55,7 @@ class _ServicesSectionState extends State<ServicesSection> {
                     crossAxisCount: isCompact ? 1 : (size.width < 1100 ? 2 : 3),
                     crossAxisSpacing: 24,
                     mainAxisSpacing: 24,
-                    mainAxisExtent: 220,
+                    mainAxisExtent: 245,
                   ),
                   itemCount: services.length,
                   itemBuilder: (context, index) {
@@ -91,6 +91,7 @@ class _ServicesSectionState extends State<ServicesSection> {
                             title,
                             style: textTheme.titleMedium?.copyWith(
                               fontWeight: FontWeight.bold,
+                              fontSize: 16,
                             ),
                           ),
                           const SizedBox(height: 8),
@@ -102,8 +103,9 @@ class _ServicesSectionState extends State<ServicesSection> {
                               style: textTheme.bodyMedium?.copyWith(
                                 color: AppColors.textSecondary,
                                 fontSize: 13,
+                                height: 1.45,
                               ),
-                              maxLines: 3,
+                              maxLines: 4,
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
@@ -125,7 +127,7 @@ class _ServicesSectionState extends State<ServicesSection> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "SERVICES",
+          "SERVICES & CONSULTING",
           style: textTheme.labelLarge?.copyWith(
             color: AppColors.primaryAccent,
             letterSpacing: 1.5,
@@ -134,10 +136,18 @@ class _ServicesSectionState extends State<ServicesSection> {
         ),
         const SizedBox(height: 8),
         Text(
-          "What I Offer",
+          "How I Can Help You Win",
           style: textTheme.displayMedium?.copyWith(
             fontWeight: FontWeight.bold,
             letterSpacing: -1.0,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          "From rapid 4-week startup MVPs to IoT hardware integration and enterprise Clean Architecture engineering.",
+          style: textTheme.bodyLarge?.copyWith(
+            color: AppColors.textSecondary,
+            fontSize: 15,
           ),
         ),
         const SizedBox(height: 12),
@@ -169,8 +179,18 @@ class _ServicesSectionState extends State<ServicesSection> {
 
   IconData _getIconData(String name) {
     switch (name) {
+      case "rocket_launch":
+        return Icons.rocket_launch_rounded;
+      case "nfc":
+        return Icons.nfc_rounded;
       case "phone_iphone":
-        return Icons.phone_iphone;
+        return Icons.phone_iphone_rounded;
+      case "payments":
+        return Icons.payments_rounded;
+      case "speed":
+        return Icons.speed_rounded;
+      case "publish":
+        return Icons.publish_rounded;
       case "android":
         return Icons.android;
       case "apple":
@@ -181,12 +201,10 @@ class _ServicesSectionState extends State<ServicesSection> {
         return Icons.sync_alt;
       case "bug_report":
         return Icons.bug_report;
-      case "publish":
-        return Icons.publish;
       case "forum":
         return Icons.forum;
       default:
-        return Icons.star_border;
+        return Icons.auto_awesome;
     }
   }
 }

@@ -18,6 +18,16 @@ class ProjectsSection extends StatefulWidget {
 
 class _ProjectsSectionState extends State<ProjectsSection> {
   bool _animate = false;
+  String _selectedCategory = "All";
+
+  static const List<String> _categories = [
+    "All",
+    "IoT & Hardware",
+    "Social & Habits",
+    "Fintech & Enterprise",
+    "E-Learning",
+    "Productivity",
+  ];
 
   void _showProjectDetails(BuildContext context, ProjectModel project) {
     showDialog(
@@ -41,7 +51,10 @@ class _ProjectsSectionState extends State<ProjectsSection> {
     final size = MediaQuery.of(context).size;
     final textTheme = Theme.of(context).textTheme;
     final isCompact = size.width < 900;
-    final projects = AppStrings.projectsList;
+    final allProjects = AppStrings.projectsList;
+    final filteredProjects = _selectedCategory == "All"
+        ? allProjects
+        : allProjects.where((p) => p.category == _selectedCategory).toList();
 
     return VisibilityDetector(
       key: const Key('projects_section'),
@@ -65,7 +78,11 @@ class _ProjectsSectionState extends State<ProjectsSection> {
               children: [
                 // Section Title
                 _buildSectionHeader(textTheme),
-                const SizedBox(height: 60),
+                const SizedBox(height: 32),
+
+                // Category Filter Tabs
+                _buildCategoryFilters(allProjects),
+                const SizedBox(height: 40),
 
                 // Grid of Projects
                 GridView.builder(
@@ -75,21 +92,21 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                     crossAxisCount: isCompact ? 1 : (size.width < 1100 ? 2 : 3),
                     crossAxisSpacing: 24,
                     mainAxisSpacing: 24,
-                    mainAxisExtent: 460,
+                    mainAxisExtent: 490,
                   ),
-                  itemCount: projects.length,
+                  itemCount: filteredProjects.length,
                   itemBuilder: (context, index) {
-                    final project = projects[index];
+                    final project = filteredProjects[index];
                     final color = HSVColor.fromAHSV(1.0, project.accentHue, 0.7, 0.9).toColor();
 
                     return GlassCard(
                       glowColor: color,
-                      padding: EdgeInsets.zero, // Padding handled inside Card structure
+                      padding: EdgeInsets.zero,
                       onTap: () => _showProjectDetails(context, project),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          // Project Thumbnail Image
+                          // Project Thumbnail Image & Floating Badge
                           Expanded(
                             flex: 5,
                             child: Stack(
@@ -111,14 +128,14 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                                     ),
                                   ),
                                 ),
-                                // Accent hue glow overlay at bottom of image
+                                // Accent hue gradient overlay
                                 Positioned.fill(
                                   child: Container(
                                     decoration: BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
                                           Colors.transparent,
-                                          AppColors.background.withOpacity(0.8),
+                                          AppColors.background.withOpacity(0.85),
                                         ],
                                         begin: Alignment.topCenter,
                                         end: Alignment.bottomCenter,
@@ -126,6 +143,51 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                                     ),
                                   ),
                                 ),
+                                // Floating Highlight Badge (e.g., IoT & NFC / RFID Flagship)
+                                if (project.highlightBadge != null)
+                                  Positioned(
+                                    top: 14,
+                                    left: 14,
+                                    child: Container(
+                                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                                      decoration: BoxDecoration(
+                                        color: AppColors.background.withOpacity(0.88),
+                                        borderRadius: BorderRadius.circular(20),
+                                        border: Border.all(color: color.withOpacity(0.55), width: 1.2),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: color.withOpacity(0.3),
+                                            blurRadius: 10,
+                                            spreadRadius: 1,
+                                          ),
+                                        ],
+                                      ),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Icon(
+                                            project.category == "IoT & Hardware"
+                                                ? Icons.nfc
+                                                : (project.highlightBadge!.contains("★")
+                                                    ? Icons.star_rounded
+                                                    : Icons.auto_awesome),
+                                            color: color,
+                                            size: 13,
+                                          ),
+                                          const SizedBox(width: 5),
+                                          Text(
+                                            project.highlightBadge!,
+                                            style: TextStyle(
+                                              color: color,
+                                              fontSize: 11,
+                                              fontWeight: FontWeight.bold,
+                                              letterSpacing: 0.3,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
                               ],
                             ),
                           ),
@@ -142,18 +204,37 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                                   Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
+                                      // Category Pill
+                                      Container(
+                                        margin: const EdgeInsets.only(bottom: 6),
+                                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                                        decoration: BoxDecoration(
+                                          color: color.withOpacity(0.1),
+                                          borderRadius: BorderRadius.circular(4),
+                                        ),
+                                        child: Text(
+                                          project.category.toUpperCase(),
+                                          style: TextStyle(
+                                            color: color,
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.bold,
+                                            letterSpacing: 0.8,
+                                          ),
+                                        ),
+                                      ),
                                       Text(
                                         project.name,
                                         style: textTheme.titleLarge?.copyWith(
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 20,
+                                          fontSize: 19,
                                         ),
                                       ),
-                                      const SizedBox(height: 8),
+                                      const SizedBox(height: 6),
                                       Text(
                                         project.shortDescription,
                                         style: textTheme.bodyMedium?.copyWith(
                                           color: AppColors.textSecondary,
+                                          height: 1.35,
                                         ),
                                         maxLines: 2,
                                         overflow: TextOverflow.ellipsis,
@@ -185,12 +266,12 @@ class _ProjectsSectionState extends State<ProjectsSection> {
                                           ),
                                         )).toList(),
                                       ),
-                                      const SizedBox(height: 16),
+                                      const SizedBox(height: 14),
                                       // Action footer
                                       Row(
                                         children: [
                                           Text(
-                                            "Learn More",
+                                            "Explore Project Case",
                                             style: TextStyle(
                                               color: color,
                                               fontWeight: FontWeight.bold,
@@ -224,24 +305,134 @@ class _ProjectsSectionState extends State<ProjectsSection> {
     );
   }
 
+  Widget _buildCategoryFilters(List<ProjectModel> allProjects) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      physics: const BouncingScrollPhysics(),
+      child: Row(
+        children: _categories.map((cat) {
+          final isSelected = _selectedCategory == cat;
+          final count = cat == "All" 
+              ? allProjects.length 
+              : allProjects.where((p) => p.category == cat).length;
+
+          return Padding(
+            padding: const EdgeInsets.only(right: 12),
+            child: InkWell(
+              borderRadius: BorderRadius.circular(24),
+              onTap: () {
+                setState(() {
+                  _selectedCategory = cat;
+                });
+              },
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+                decoration: BoxDecoration(
+                  color: isSelected 
+                      ? AppColors.primaryAccent.withOpacity(0.18)
+                      : AppColors.surfaceCard,
+                  borderRadius: BorderRadius.circular(24),
+                  border: Border.all(
+                    color: isSelected 
+                        ? AppColors.primaryAccent 
+                        : AppColors.borderLight,
+                    width: isSelected ? 1.5 : 1,
+                  ),
+                  boxShadow: isSelected ? [
+                    BoxShadow(
+                      color: AppColors.primaryAccent.withOpacity(0.25),
+                      blurRadius: 12,
+                      spreadRadius: 1,
+                    )
+                  ] : null,
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      cat,
+                      style: TextStyle(
+                        color: isSelected ? Colors.white : AppColors.textSecondary,
+                        fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
+                        fontSize: 13,
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                      decoration: BoxDecoration(
+                        color: isSelected 
+                            ? AppColors.primaryAccent 
+                            : AppColors.borderLight.withOpacity(0.5),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Text(
+                        "$count",
+                        style: TextStyle(
+                          color: isSelected ? Colors.black : AppColors.textMuted,
+                          fontSize: 11,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        }).toList(),
+      ),
+    );
+  }
+
   Widget _buildSectionHeader(TextTheme textTheme) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Row(
+          children: [
+            Text(
+              "PROVEN PRODUCTION WORK",
+              style: textTheme.labelLarge?.copyWith(
+                color: AppColors.primaryAccent,
+                letterSpacing: 1.5,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(width: 12),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+              decoration: BoxDecoration(
+                color: AppColors.primaryAccent.withOpacity(0.12),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: AppColors.primaryAccent.withOpacity(0.3)),
+              ),
+              child: const Text(
+                "15+ Apps Shipped",
+                style: TextStyle(
+                  color: AppColors.primaryAccent,
+                  fontSize: 11,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 8),
         Text(
-          "MY PROJECTS",
-          style: textTheme.labelLarge?.copyWith(
-            color: AppColors.primaryAccent,
-            letterSpacing: 1.5,
+          "Featured Projects & Case Studies",
+          style: textTheme.displayMedium?.copyWith(
             fontWeight: FontWeight.bold,
+            letterSpacing: -1.0,
           ),
         ),
         const SizedBox(height: 8),
         Text(
-          "Featured Work",
-          style: textTheme.displayMedium?.copyWith(
-            fontWeight: FontWeight.bold,
-            letterSpacing: -1.0,
+          "Real-world mobile apps engineered for global clients with IoT hardware, Clean Architecture, in-app billing, and buttery 60 FPS performance.",
+          style: textTheme.bodyLarge?.copyWith(
+            color: AppColors.textSecondary,
+            fontSize: 15,
           ),
         ),
         const SizedBox(height: 12),
@@ -315,11 +506,37 @@ class _ProjectDetailsDialogContentState extends State<_ProjectDetailsDialogConte
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  project.name,
-                  style: textTheme.headlineMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Outfit',
+                Expanded(
+                  child: Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    spacing: 12,
+                    runSpacing: 6,
+                    children: [
+                      Text(
+                        project.name,
+                        style: textTheme.headlineMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Outfit',
+                        ),
+                      ),
+                      if (project.highlightBadge != null)
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                          decoration: BoxDecoration(
+                            color: color.withOpacity(0.12),
+                            borderRadius: BorderRadius.circular(16),
+                            border: Border.all(color: color.withOpacity(0.4)),
+                          ),
+                          child: Text(
+                            project.highlightBadge!,
+                            style: TextStyle(
+                              color: color,
+                              fontSize: 11,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                    ],
                   ),
                 ),
                 IconButton(
@@ -354,20 +571,45 @@ class _ProjectDetailsDialogContentState extends State<_ProjectDetailsDialogConte
                   child: const Text("Close Details"),
                 ),
                 const SizedBox(width: 16),
-                ElevatedButton(
-                  onPressed: () => _launchUrl(project.playStoreUrl),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: color,
-                    foregroundColor: Colors.white,
+                if (project.playStoreUrl.isNotEmpty)
+                  ElevatedButton(
+                    onPressed: () => _launchUrl(project.playStoreUrl),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: color,
+                      foregroundColor: Colors.white,
+                    ),
+                    child: Row(
+                      children: const [
+                        Icon(Icons.play_arrow, size: 18),
+                        SizedBox(width: 8),
+                        Text("View on Play Store"),
+                      ],
+                    ),
+                  )
+                else
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                    decoration: BoxDecoration(
+                      color: AppColors.surfaceCard,
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: AppColors.borderLight),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: const [
+                        Icon(Icons.verified_user_outlined, size: 16, color: AppColors.primaryAccent),
+                        SizedBox(width: 8),
+                        Text(
+                          "Enterprise / Client Production App",
+                          style: TextStyle(
+                            color: AppColors.textSecondary,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  child: Row(
-                    children: const [
-                      Icon(Icons.play_arrow, size: 18),
-                      SizedBox(width: 8),
-                      Text("View on Play Store"),
-                    ],
-                  ),
-                ),
               ],
             ),
           ),

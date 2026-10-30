@@ -242,46 +242,91 @@ class _HeroSectionState extends State<HeroSection> with SingleTickerProviderStat
     );
   }
 
-  Widget _buildAvailabilityBadge() {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
-      decoration: BoxDecoration(
-        color: const Color(0x1A10B981), // Translucent green
-        borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: const Color(0x5510B981), width: 1.2),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.greenAccent.withOpacity(0.15),
-            blurRadius: 12,
-            spreadRadius: 0,
+  Widget _buildAvailabilityBadge({bool center = false}) {
+    return Wrap(
+      alignment: center ? WrapAlignment.center : WrapAlignment.start,
+      spacing: 12,
+      runSpacing: 8,
+      children: [
+        // Available for Freelance & Senior Roles
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+          decoration: BoxDecoration(
+            color: const Color(0x1A10B981), // Translucent green
+            borderRadius: BorderRadius.circular(24),
+            border: Border.all(color: const Color(0x5510B981), width: 1.2),
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.greenAccent.withOpacity(0.15),
+                blurRadius: 12,
+                spreadRadius: 0,
+              ),
+            ],
           ),
-        ],
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: 8,
-            height: 8,
-            decoration: const BoxDecoration(
-              color: AppColors.greenAccent,
-              shape: BoxShape.circle,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                width: 8,
+                height: 8,
+                decoration: const BoxDecoration(
+                  color: AppColors.greenAccent,
+                  shape: BoxShape.circle,
+                ),
+              )
+                  .animate(onPlay: (c) => c.repeat(reverse: true))
+                  .scale(begin: const Offset(0.85, 0.85), end: const Offset(1.25, 1.25), duration: 1.seconds),
+              const SizedBox(width: 9),
+              const Text(
+                "AVAILABLE FOR FREELANCE & SENIOR ROLES",
+                style: TextStyle(
+                  color: AppColors.greenAccent,
+                  letterSpacing: 1.1,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 11,
+                ),
+              ),
+            ],
+          ),
+        ),
+
+        // Clutch 5.0 Verified Review Badge
+        InkWell(
+          onTap: () => widget.onActionPressed("Testimonials"),
+          borderRadius: BorderRadius.circular(24),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+            decoration: BoxDecoration(
+              color: const Color(0x1AF59E0B), // Translucent amber
+              borderRadius: BorderRadius.circular(24),
+              border: Border.all(color: const Color(0x55F59E0B), width: 1.2),
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0xFFF59E0B).withOpacity(0.15),
+                  blurRadius: 12,
+                  spreadRadius: 0,
+                ),
+              ],
             ),
-          )
-              .animate(onPlay: (c) => c.repeat(reverse: true))
-              .scale(begin: const Offset(0.85, 0.85), end: const Offset(1.25, 1.25), duration: 1.seconds),
-          const SizedBox(width: 9),
-          const Text(
-            "AVAILABLE FOR WORK & PROJECTS",
-            style: TextStyle(
-              color: AppColors.greenAccent,
-              letterSpacing: 1.1,
-              fontWeight: FontWeight.w700,
-              fontSize: 11.5,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                Icon(Icons.star_rounded, color: Color(0xFFF59E0B), size: 14),
+                SizedBox(width: 6),
+                Text(
+                  "5.0 CLUTCH VERIFIED RATING",
+                  style: TextStyle(
+                    color: Color(0xFFF59E0B),
+                    letterSpacing: 1.1,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 11,
+                  ),
+                ),
+              ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     ).animate().fadeIn(duration: 400.ms).slideY(begin: -0.2, end: 0);
   }
 
@@ -329,9 +374,9 @@ class _HeroSectionState extends State<HeroSection> with SingleTickerProviderStat
             repeatForever: true,
             animatedTexts: [
               TypewriterAnimatedText("Production Flutter Apps", textStyle: textStyle, speed: 80.ms),
-              TypewriterAnimatedText("Android & iOS Applications", textStyle: textStyle, speed: 80.ms),
-              TypewriterAnimatedText("Scalable Clean Architecture", textStyle: textStyle, speed: 80.ms),
-              TypewriterAnimatedText("High-Performance Mobile UIs", textStyle: textStyle, speed: 80.ms),
+              TypewriterAnimatedText("Hardware & IoT NFC Solutions", textStyle: textStyle, speed: 80.ms),
+              TypewriterAnimatedText("High-Converting Startup MVPs", textStyle: textStyle, speed: 80.ms),
+              TypewriterAnimatedText("Enterprise Android & iOS Apps", textStyle: textStyle, speed: 80.ms),
             ],
           ),
         ],
@@ -357,13 +402,14 @@ class _HeroSectionState extends State<HeroSection> with SingleTickerProviderStat
   Widget _buildHighlightMetricsRow({bool center = false}) {
     final metrics = [
       {"icon": Icons.verified_rounded, "label": "4+ Years Exp", "color": AppColors.secondaryAccent},
+      {"icon": Icons.nfc_rounded, "label": "IoT & Hardware Ready", "color": AppColors.violetAccent},
       {"icon": Icons.rocket_launch_rounded, "label": "15+ Apps Shipped", "color": AppColors.primaryAccent},
-      {"icon": Icons.trending_up_rounded, "label": "100K+ Downloads", "color": AppColors.greenAccent},
+      {"icon": Icons.star_rounded, "label": "5.0 Clutch Verified", "color": const Color(0xFFF59E0B)},
     ];
 
     return Wrap(
       alignment: center ? WrapAlignment.center : WrapAlignment.start,
-      spacing: 12,
+      spacing: 10,
       runSpacing: 10,
       children: metrics.map((m) {
         final col = m["color"] as Color;
@@ -381,7 +427,7 @@ class _HeroSectionState extends State<HeroSection> with SingleTickerProviderStat
               const SizedBox(width: 7),
               Text(
                 m["label"] as String,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 12.5,
                   fontWeight: FontWeight.w600,
@@ -401,6 +447,7 @@ class _HeroSectionState extends State<HeroSection> with SingleTickerProviderStat
       spacing: 16,
       runSpacing: 14,
       children: [
+        // Primary CTA: Hire Me / Discuss Project
         Container(
           decoration: BoxDecoration(
             gradient: const LinearGradient(
@@ -418,12 +465,12 @@ class _HeroSectionState extends State<HeroSection> with SingleTickerProviderStat
             ],
           ),
           child: ElevatedButton(
-            onPressed: () => widget.onActionPressed("Projects"),
+            onPressed: () => widget.onActionPressed("Contact"),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.transparent,
               shadowColor: Colors.transparent,
               foregroundColor: Colors.white,
-              padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 18),
+              padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 18),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(28),
               ),
@@ -431,23 +478,50 @@ class _HeroSectionState extends State<HeroSection> with SingleTickerProviderStat
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: const [
+                Icon(Icons.handshake_outlined, size: 18),
+                SizedBox(width: 8),
                 Text(
-                  "Explore Work",
+                  "Hire Me / Discuss Project",
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(width: 8),
-                Icon(Icons.arrow_forward_rounded, size: 18),
               ],
             ),
           ),
         ),
+
+        // Secondary CTA: Explore Work
+        OutlinedButton(
+          onPressed: () => widget.onActionPressed("Projects"),
+          style: OutlinedButton.styleFrom(
+            foregroundColor: Colors.white,
+            side: const BorderSide(color: Color(0x5538BDF8), width: 1.3),
+            backgroundColor: const Color(0x1038BDF8),
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 18),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(28),
+            ),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              Text(
+                "Explore Work",
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(width: 8),
+              Icon(Icons.arrow_forward_rounded, size: 18, color: AppColors.secondaryAccent),
+            ],
+          ),
+        ),
+
+        // Resume Download
         OutlinedButton(
           onPressed: _downloadResume,
           style: OutlinedButton.styleFrom(
             foregroundColor: Colors.white,
             side: const BorderSide(color: Color(0x33FFFFFF), width: 1.3),
             backgroundColor: const Color(0x0FFFFFFF),
-            padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 18),
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 18),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(28),
             ),
@@ -458,7 +532,7 @@ class _HeroSectionState extends State<HeroSection> with SingleTickerProviderStat
               Icon(Icons.download_rounded, size: 18, color: AppColors.secondaryAccent),
               SizedBox(width: 8),
               Text(
-                "Download Resume",
+                "Resume PDF",
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
               ),
             ],
